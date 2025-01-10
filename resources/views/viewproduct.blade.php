@@ -167,35 +167,6 @@
 
         {{-- allow auth user to give review --}}
 
-        <!-- Allow authenticated user to submit a review -->
-        <!-- Review Form Section -->
-        @auth
-
-
-            <div class="px-4 mt-10 review-form lg:px-16">
-                <h2 class="pl-2 mb-4 text-2xl font-semibold border-l-4 border-yellow-500">Leave a Review</h2>
-                <form action="{{ route('review.store', $product->id) }}" method="POST"
-                    class="p-6 bg-gray-100 rounded-lg shadow-lg">
-                    @csrf
-                    <div class="flex items-center mb-4">
-                        <label for="rating" class="mr-4">Rating:</label>
-                        <select name="rating" id="rating" class="p-2 border rounded-md">
-                            <option value="1">1 Star</option>
-                            <option value="2">2 Stars</option>
-                            <option value="3">3 Stars</option>
-                            <option value="4">4 Stars</option>
-                            <option value="5">5 Stars</option>
-                        </select>
-                    </div>
-                    <div class="mb-4">
-                        <label for="review" class="block mb-2">Review:</label>
-                        <textarea name="review" id="review" rows="4" class="w-full p-2 border rounded-md" required></textarea>
-                    </div>
-                    <button type="submit" class="p-2 text-white bg-[#9a031fdd] rounded-lg ">Submit
-                        Review</button>
-                </form>
-            </div>
-        @endauth
 
         @guest
             <div class="px-4 mt-5 lg:px-16">

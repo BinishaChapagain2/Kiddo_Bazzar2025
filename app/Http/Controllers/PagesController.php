@@ -69,7 +69,7 @@ class PagesController extends Controller
             ->get();
 
         // Fetch reviews for the current product
-        $reviews = $product->reviews;
+        $reviews = $product->reviews()->orderBy('rating', 'desc')->get();
 
         // Calculate the average rating for the current product
         $averageRating = $product->averageRating();

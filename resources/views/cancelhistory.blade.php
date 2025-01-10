@@ -2,15 +2,15 @@
 
 @section('content')
     <div class="container px-6 py-12 mx-auto">
-        <h1 class="px-6 mb-8 text-3xl font-bold text-[#9a031f] border-l-8 border-yellow-500">My Orders</h1>
+        <h1 class="px-6 mb-8 text-3xl font-bold text-[#9a031f] border-l-8 border-yellow-500">My History</h1>
 
-        @if ($orders->isEmpty())
+        @if ($ordershistory->isEmpty())
             <div class="p-6 mb-8 text-yellow-800 bg-yellow-100 border-l-8 border-yellow-500 rounded-lg shadow">
-                <p class="text-lg">You have no orders yet.</p>
+                <p class="text-lg">You have no orders history yet.</p>
             </div>
         @else
-            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-                @foreach ($orders as $order)
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                @foreach ($ordershistory as $order)
                     <div
                         class="p-6 transition-transform transform bg-white border border-gray-300 rounded-lg shadow-lg hover:shadow-xl hover:scale-105">
                         <div class="flex items-center gap-4 mb-4">
@@ -27,18 +27,18 @@
                             <p class="text-sm"><strong>Price:</strong> Rs.{{ number_format($order->price, 2) }}</p>
                             <p class="text-sm"><strong>Payment Method:</strong> {{ $order->payment_method }}</p>
                             <p class="text-sm"><strong>Order Date:</strong> {{ $order->created_at->format('d-m-Y') }}</p>
-                            <p class="mt-2 text-sm font-semibold">
+                            {{-- <p class="mt-2 text-sm font-semibold">
                                 <span
                                     class="inline-block px-3 py-1 text-xs font-bold rounded-full
                                     {{ $order->status == 'Pending' ? 'bg-yellow-500 text-white' : ($order->status == 'Shipping' ? 'bg-blue-500 text-white' : ($order->status == 'Processing' ? 'bg-orange-500 text-white' : ($order->status == 'Completed' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'))) }}">
                                     {{ $order->status }}
                                 </span>
-                            </p>
+                            </p> --}}
                         </div>
                         <div class="flex items-center justify-between mt-6">
                             <button onclick="showPopup('{{ $order->id }}')"
-                                class="px-4 py-2 text-white transition bg-red-600 rounded hover:bg-red-700">Cancel
-                                Order</button>
+                                class="px-4 py-2 text-white transition bg-red-600 rounded hover:bg-red-700">Delete
+                                History</button>
                         </div>
                     </div>
                 @endforeach
@@ -49,10 +49,10 @@
     {{-- Popup Modal --}}
     <div class="fixed inset-0 z-50 items-center justify-center hidden bg-gray-900 bg-opacity-50 backdrop-blur-sm"
         id="popup">
-        <form action="{{ route('order.destroy', '') }}" method="POST" class="p-8 bg-white rounded-lg shadow-lg">
+        <form action="{{ route('cancelhistory.destroy', '') }}" method="POST" class="p-8 bg-white rounded-lg shadow-lg">
             @csrf
             @method('DELETE')
-            <h3 class="mb-6 text-lg font-semibold text-gray-800">Are you sure you want to cancel this order?</h3>
+            <h3 class="mb-6 text-lg font-semibold text-gray-800">Are you sure you want to remove your order history?</h3>
             <input type="hidden" id="dataid" name="dataid">
             <div class="flex gap-4">
                 <button type="submit" class="px-4 py-2 text-white bg-yellow-500 rounded hover:bg-yellow-600">Yes,

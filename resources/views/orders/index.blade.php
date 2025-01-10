@@ -54,6 +54,7 @@
                                         class="px-2 py-1 text-xs text-white rounded-lg bg-amber-600 md:text-sm">Shipping</a>
                                     <a href="{{ route('order.status', [$order->id, 'Delivered']) }}"
                                         class="px-2 py-1 text-xs text-white bg-red-600 rounded-lg md:text-sm">Delivered</a>
+
                                 </div>
                             </td>
                         </tr>

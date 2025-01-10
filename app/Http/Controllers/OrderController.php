@@ -42,7 +42,9 @@ class OrderController extends Controller
                 'name' => $cart->user->name,
                 'phone' => $cart->user->phone,
                 'address' => $cart->user->address,
+
             ];
+
 
 
             Order::create($data);
@@ -91,7 +93,7 @@ class OrderController extends Controller
 
 
         $cart->delete();
-        return redirect(route('home'))->with('success', 'Order placed successfully');
+        return redirect(route('home'))->with('success', 'Order placed successfully')->with('successdelivered', 'Order is placed successfully');
     }
 
 
@@ -116,11 +118,27 @@ class OrderController extends Controller
     public function myorder()
     {
         // Fetch orders for the logged-in user
-        $orders = Order::where('user_id', Auth::id())->latest()->get();
+        // fetch where status not equal to cancelled all
+        $orders = Order::where('user_id', Auth::id())->where('status', '!=', 'Cancelled')->latest()->get();
 
         // Pass the orders to the Blade view
         return view('myorder', compact('orders'));
     }
+
+
+    public function orderhistory()
+    {
+        $ordershistory = Order::where('status', 'Cancelled')->latest()->get();
+        return view('cancelhistory', compact('ordershistory'));
+    }
+
+    public function orderhistorydestroy(Request $request)
+    {
+        $order = Order::find($request->dataid);
+        $order->delete();
+        return back()->with('success', 'Order history deleted successfully');
+    }
+
 
 
 
@@ -133,7 +151,10 @@ class OrderController extends Controller
             $product = Product::find($order->product_id);
             $product->stock = $product->stock + $order->qty;
             $product->save();
-            $order->delete();
+
+            // i want to change the status of the order to cancelled
+            $order->status = 'Cancelled';
+            $order->save();
             return back()->with('success', 'Order Cancelled successfully');
         } else {
             return back()->with('success', 'Order cannot be Cancelled, Please contact with seller for more information');

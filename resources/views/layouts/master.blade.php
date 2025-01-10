@@ -58,6 +58,7 @@
 
 <body class="text-gray-800 bg-gray-50">
     @include('layouts.alert')
+    @include('layouts.reviewalert')
 
 
     <!-- Header -->
@@ -130,6 +131,10 @@
                             <a href="{{ route('myorder') }}"
                                 class="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <i class="bx bxs-shopping-bag text-[#9a031fdd] mr-2"></i> My Orders
+                            </a>
+                            <a href="{{ route('cancelhistory') }}"
+                                class="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <i class="bx bxs-shopping-bag text-[#9a031fdd] mr-2"></i> My History
                             </a>
                             <a href="{{ route('profile.edit') }}"
                                 class="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">

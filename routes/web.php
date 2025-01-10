@@ -36,8 +36,15 @@ Route::middleware('auth')->group(function () {
     Route::post('order/store', [OrderController::class, 'storecod'])->name('order.storecod');
     Route::get('myorder', [OrderController::class, 'myorder'])->name('myorder');
     Route::delete('order/destroy', [OrderController::class, 'destroy'])->name('order.destroy');
+
     // update product stock after order
     Route::get('order/{id}/update', [OrderController::class, 'update'])->name('order.update');
+
+    //Order history
+    Route::get('cancelhistory', [OrderController::class, 'orderhistory'])->name('cancelhistory');
+    //delete order history
+    Route::delete('cancelhistory/destroy', [OrderController::class, 'orderhistorydestroy'])->name('cancelhistory.destroy');
+
 
 
 
