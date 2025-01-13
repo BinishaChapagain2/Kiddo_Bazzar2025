@@ -12,10 +12,10 @@ class BannerController extends Controller
     public function index()
     {
         // Fetch all banners with their associated category, ordered by priority
-        $banners = Banner::with('category')->orderBy('priority')->get();
+        $banner = Banner::with('category')->orderBy('priority')->get();
 
         // Pass banners data to the view
-        return view('banner.index', compact('banners'));
+        return view('banner.index', compact('banner'));
     }
 
     // Method to show the create banner form

@@ -9,52 +9,32 @@
     <!-- Slider main container -->
     <div class="w-full h-64 md:h-96 lg:h-[500px] swiper mySwiper">
         <!-- Swiper Wrapper -->
-        <div class="mt-0 swiper-wrapper">
-
+        <div class="swiper-wrapper">
             @foreach ($banners as $banner)
                 <div class="swiper-slide">
                     <div class="relative w-full h-full">
-                        <img src="{{ asset('images/banners/' . $banner->photopath) }}" alt="Big Sale Event"
-                            class="object-cover w-full h-full">
-                        <!-- Overlay for text -->
-                        <div class="absolute inset-0 opacity-75 bg-gradient-to-t from-black via-transparent"></div>
-                        <!-- Banner details (Centered Text) -->
-                        <div class="absolute inset-0 flex flex-col items-center justify-center px-4 text-center text-white">
-                            <h1 class="mb-2 text-xl font-bold text-[#9a031fdd] sm:text-3xl md:text-4xl lg:text-5xl">
-                                {{ $banner->name }}</h1>
-                            <p class="mb-4 text-sm text-[#9a031fdd] sm:text-lg md:text-xl lg:text-2xl">
-                                {{ $banner->description }}
-                            </p>
+                        <!-- Check if category is not null -->
+                        @if ($banner->category)
+                            <a href="{{ route('categoryproduct', $banner->category->id) }}" class="group">
+                                <!-- Banner Image -->
+                                <img src="{{ asset('images/banners/' . $banner->photopath) }}" alt="Big Sale Event"
+                                    class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105">
 
-                            <div class="flex flex-col mt-4 space-y-2 sm:flex-row sm:space-y-0 sm:space-x-4">
-
-                                <!-- Check if category is not null -->
-                                @if ($banner->category)
-                                    <a href="{{ route('categoryproduct', $banner->category->id) }}"
-                                        class="px-4 py-2 text-sm font-semibold text-[#9a031fdd] transition-transform duration-300 bg-blue-600 rounded-lg shadow-lg sm:px-6 sm:py-3 sm:text-base hover:bg-blue-700 hover:scale-105">
-                                        {{ $banner->category->name }}
-                                    </a>
-                                @else
-                                    <!-- Default text if category is not assigned -->
-                                    <span class="px-4 py-2 text-sm font-semibold text-gray-600">No Category</span>
-                                @endif
-
-                                {{-- <!-- Link to Category -->
-                                <a href="{{ route('categoryproduct', $banner->category->id) }}"
-                                    class="px-4 py-2 text-sm font-semibold text-[#9a031fdd] transition-transform duration-300 bg-blue-600 rounded-lg shadow-lg sm:px-6 sm:py-3 sm:text-base hover:bg-blue-700 hover:scale-105">
-                                    {{ $banner->category->name }}
-                                </a> --}}
+                            </a>
+                        @else
+                            <!-- Default text if category is not assigned -->
+                            <div class="flex items-center justify-center w-full h-full bg-gray-200">
+                                <span class="px-4 py-2 text-sm font-semibold text-gray-600">No Category</span>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             @endforeach
-
-            <!-- Pagination -->
-            <div class="swiper-pagination"></div>
         </div>
-    </div>
 
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
 
     <!-- Swiper JS initialization -->
     <script>
@@ -67,6 +47,10 @@
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true,
             },
         });
     </script>

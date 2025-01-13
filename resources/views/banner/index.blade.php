@@ -41,7 +41,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($banners as $banner)
+                        @foreach ($banner as $banner)
                             <tr class="transition duration-300 border-b bg-gray-50 hover:bg-blue-100">
                                 <td class="px-4 py-2 text-xs sm:px-6 sm:py-4 sm:text-sm md:text-base">
                                     {{ $banner->priority }}</td>
@@ -68,10 +68,17 @@
                                             onclick="showpopup({{ $banner->id }})">Delete</a>
                                     </div>
                                 </td>
+
+
                             </tr>
+                        @endforeach
 
                     </tbody>
+
+
+
                 </table>
+
             </div>
         </div>
 
@@ -95,7 +102,7 @@
                 </div>
             </form>
         </div>
-        @endforeach
+
         {{-- end pop up model --}}
     @endsection
 
