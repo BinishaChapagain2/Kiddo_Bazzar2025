@@ -69,7 +69,7 @@
 
 <body class="text-gray-800 bg-gray-50">
     @include('layouts.alert')
-    @include('layouts.reviewalert')
+ 
 
 
     <!-- Header -->

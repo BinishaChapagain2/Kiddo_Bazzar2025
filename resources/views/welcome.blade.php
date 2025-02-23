@@ -1,5 +1,28 @@
 @extends('layouts.master')
+
 @section('content')
+    @auth
+        @php
+            // For regular users, check for pending review orders
+            $hasPendingReview = \App\Models\order::where('user_id', auth()->user()->id)
+                ->where('status', 'Delivered')
+                ->where('is_review', false)
+                ->exists();
+            $productPendingReviews = \App\Models\order::where('user_id', auth()->user()->id)
+                ->where('status', 'Delivered')
+                ->where('is_review', false)
+                ->get();
+        @endphp
+        @if ($hasPendingReview)
+            @foreach ($productPendingReviews->take(1) as $order)
+                @include('layouts.reviewalert') {{-- This includes your review popup --}}
+            @endforeach
+        @endif
+    @endauth
+
+
+
+
     {{-- slider  --}}
 
 

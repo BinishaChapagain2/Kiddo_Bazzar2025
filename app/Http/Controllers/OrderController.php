@@ -117,10 +117,9 @@ class OrderController extends Controller
                 ->subject('Order Status');
         });
 
-        // If the order is delivered, set a session alert
-        if ($status == 'Delivered') {
-            return redirect('home')->with('successdelivered', 'Your order has been delivered successfully.');
-        }
+
+
+
 
         return back()->with('success', 'Order is now ' . $status);
     }
