@@ -60,13 +60,16 @@
 
     <div class="px-2 mt-5">
         <div class="pl-2 mb-4 border-l-4 border-yellow-500">
-            <h1 class="lg:text-3xl text-xl font-bold text-[#9a031fdd]">CATEGORIES</h1>
+            <h1 class="lg:text-3xl text-xl font-bold text-[#9a031fdd] ">Trending
+                Categories</h1>
             <p class="text-sm text-gray-600 lg:text-lg">Explore our wide range of products by category.
             </p>
         </div>
     </div>
 
-    <div class="flex gap-4 py-2 overflow-x-auto no-scrollbar">
+
+
+    <div class="flex gap-4 py-2 overflow-x-auto no-scrollbar ">
         @foreach ($categories as $category)
             <!-- Category -->
             <a href="{{ route('categoryproduct', $category->id) }}">
@@ -103,7 +106,7 @@
 
     <div class="px-2 mt-5">
         <div class="pl-2 mb-4 border-l-4 border-yellow-500">
-            <h1 class="lg:text-3xl text-xl font-bold text-[#9a031fdd]">NEW ARRIVALS</h1>
+            <h1 class="lg:text-3xl text-xl font-bold text-[#9a031fdd]">Latest Collection For You</h1>
             <p class="text-sm text-gray-600 lg:text-lg">Discover our latest collection! Unveiling fresh styles and must-have
                 products.
             </p>
@@ -114,18 +117,19 @@
 
     <!-- Container for horizontal scrolling on small and medium devices -->
     <!-- Container for horizontal scrolling on small and medium devices -->
-    <div class="mx-3 mt-5 overflow-x-auto hide-scrollbar">
+    <div class="mx-3 mt-5 mb-10 overflow-x-auto hide-scrollbar">
         <!-- For small and medium devices, use flex for horizontal scrolling; for large devices, use grid -->
-        <div class="flex gap-2 sm:flex-nowrap lg:grid lg:grid-cols-4">
+        <!-- For small and medium devices, use flex for horizontal scrolling; for large devices, use grid -->
+        <div
+            class="flex w-full space-x-2 overflow-x-scroll lg:space-x-2 lg:overflow-hidden md:space-x-6 sm:flex-nowrap lg:grid lg:grid-cols-4 lg:gap-2">
             <!-- Product Loop -->
             @foreach ($products as $product)
-                <a href="{{ route('viewproduct', $product->id) }}" class="flex-shrink-0 lg:col-span-1">
-                    <!-- Product card with responsive min-width -->
-                    <div class="overflow-hidden mt-2 border rounded-lg shadow-lg min-w-[16rem] max-w-[18rem]">
+                <a href="{{ route('viewproduct', $product->id) }}" class="block min-w-[16rem]">
+                    <div class="overflow-hidden border rounded-lg shadow-lg wow animate__animated animate__zoomIn">
                         <img src="{{ asset('images/products/' . $product->photopath) }}" alt="{{ $product->name }}"
                             class="object-cover w-full h-64">
                         <div class="p-4">
-                            <h3 class="text-lg font-semibold">{{ Str::limit($product->name, 20) }}</h3>
+                            <h3 class="text-lg font-semibold ">{{ Str::limit($product->name, 20) }}</h3>
                             <p class="text-sm text-gray-500">{{ Str::limit($product->description, 20) }}</p>
                             <div class="mt-2">
                                 <span class="text-lg font-bold text-gray-900">Rs. {{ $product->price }}</span>
@@ -137,7 +141,8 @@
                                         OFF)</span>
                                 @endif
                             </div>
-                            <!-- Star Ratings -->
+
+                            <!-- Star Rating -->
                             <div class="flex items-center mt-2">
                                 <div class="flex items-center">
                                     @php
@@ -146,21 +151,19 @@
                                         $halfStars = $averageRating - $fullStars >= 0.5 ? 1 : 0;
                                         $emptyStars = 5 - ($fullStars + $halfStars);
                                     @endphp
-
                                     @for ($i = 0; $i < $fullStars; $i++)
                                         <i class='text-yellow-500 bx bxs-star'></i>
                                     @endfor
-
                                     @if ($halfStars)
                                         <i class='text-yellow-500 bx bxs-star-half'></i>
                                     @endif
-
                                     @for ($i = 0; $i < $emptyStars; $i++)
                                         <i class='text-yellow-500 bx bx-star'></i>
                                     @endfor
                                 </div>
                                 <span class="ml-2 text-sm text-yellow-500">{{ number_format($averageRating, 1) }}</span>
-                                <span class="ml-2 text-sm text-gray-400">{{ $product->reviews->count() }} reviews</span>
+                                <span class="ml-2 text-sm text-gray-400">{{ $product->reviews->count() }}
+                                    reviews</span>
                             </div>
                         </div>
                     </div>
@@ -200,71 +203,87 @@
 
     <div class="px-2 mt-5 ">
         <div class="pl-2 mb-4 ">
-            <h1 class="lg:text-3xl text-xl font-bold text-[#9a031fdd]">SHOP BY CATEGORIES</h1>
+            <h1 class="lg:text-3xl text-xl font-bold text-[#9a031fdd]">Just For You</h1>
             <p class="text-sm text-gray-600 lg:text-lg">Check out our top picks for you! Handpicked products that you’ll
                 love.</p>
         </div>
     </div>
 
     <!-- Container for horizontal scrolling on small and medium devices -->
+
+
     <div class="grid w-full grid-cols-1 gap-6 px-4 ">
         @foreach ($categories as $category)
-            <div class="mb-8">
-                <h2 class="pl-2 mb-4 text-2xl font-semibold border-l-4 border-yellow-500">{{ $category->name }}</h2>
+            @if ($category->products->count() > 0)
+                <div class="mb-8 wow animate__animated animate__zoomIn ">
+                    <h2 class="pl-2 mb-4 text-2xl font-semibold border-l-4 border-yellow-500">{{ $category->name }}</h2>
 
-                <!-- For small and medium devices, use flex for horizontal scrolling; for large devices, use grid -->
-                <div
-                    class="flex w-full space-x-2 overflow-x-scroll lg:space-x-2 lg:overflow-hidden md:space-x-6 sm:flex-nowrap lg:grid lg:grid-cols-4 lg:gap-2">
-                    <!-- Product Loop -->
-                    @foreach ($category->products as $product)
-                        <a href="{{ route('viewproduct', $product->id) }}" class="block min-w-[16rem]">
-                            <div class="overflow-hidden border rounded-lg shadow-lg">
-                                <img src="{{ asset('images/products/' . $product->photopath) }}"
-                                    alt="{{ $product->name }}" class="object-cover w-full h-64">
-                                <div class="p-4">
-                                    <h3 class="text-lg font-semibold ">{{ Str::limit($product->name, 20) }}</h3>
-                                    <p class="text-sm text-gray-500">{{ Str::limit($product->description, 20) }}</p>
-                                    <div class="mt-2">
-                                        <span class="text-lg font-bold text-gray-900">Rs. {{ $product->price }}</span>
-                                        @if ($product->discounted_price)
-                                            <span class="text-sm text-gray-400 line-through">Rs.
-                                                {{ $product->discounted_price }}</span>
-                                            <span
-                                                class="text-sm font-bold text-red-500">({{ round((($product->discounted_price - $product->price) / $product->discounted_price) * 100) }}%
-                                                OFF)</span>
-                                        @endif
-                                    </div>
-
-                                    <!-- Star Rating -->
-                                    <div class="flex items-center mt-2">
-                                        <div class="flex items-center">
-                                            @php
-                                                $averageRating = $product->reviews_avg_rating ?? 0;
-                                                $fullStars = floor($averageRating);
-                                                $halfStars = $averageRating - $fullStars >= 0.5 ? 1 : 0;
-                                                $emptyStars = 5 - ($fullStars + $halfStars);
-                                            @endphp
-                                            @for ($i = 0; $i < $fullStars; $i++)
-                                                <i class='text-yellow-500 bx bxs-star'></i>
-                                            @endfor
-                                            @if ($halfStars)
-                                                <i class='text-yellow-500 bx bxs-star-half'></i>
+                    <!-- For small and medium devices, use flex for horizontal scrolling; for large devices, use grid -->
+                    <div
+                        class="flex w-full space-x-2 overflow-x-scroll lg:space-x-2 lg:overflow-hidden md:space-x-6 sm:flex-nowrap lg:grid lg:grid-cols-4 lg:gap-2">
+                        <!-- Product Loop -->
+                        @foreach ($category->products->take(4) as $product)
+                            <a href="{{ route('viewproduct', $product->id) }}"
+                                class="block min-w-[16rem] wow animate__animated animate__zoomIn">
+                                <div class="overflow-hidden border rounded-lg shadow-lg">
+                                    <img src="{{ asset('images/products/' . $product->photopath) }}"
+                                        alt="{{ $product->name }}" class="object-cover w-full h-64">
+                                    <div class="p-4">
+                                        <h3 class="text-lg font-semibold ">{{ Str::limit($product->name, 20) }}</h3>
+                                        <p class="text-sm text-gray-500">{{ Str::limit($product->description, 20) }}</p>
+                                        <div class="mt-2">
+                                            <span class="text-lg font-bold text-gray-900">Rs. {{ $product->price }}</span>
+                                            @if ($product->discounted_price)
+                                                <span class="text-sm text-gray-400 line-through">Rs.
+                                                    {{ $product->discounted_price }}</span>
+                                                <span
+                                                    class="text-sm font-bold text-red-500">({{ round((($product->discounted_price - $product->price) / $product->discounted_price) * 100) }}%
+                                                    OFF)</span>
                                             @endif
-                                            @for ($i = 0; $i < $emptyStars; $i++)
-                                                <i class='text-yellow-500 bx bx-star'></i>
-                                            @endfor
                                         </div>
-                                        <span
-                                            class="ml-2 text-sm text-yellow-500">{{ number_format($averageRating, 1) }}</span>
-                                        <span class="ml-2 text-sm text-gray-400">{{ $product->reviews->count() }}
-                                            reviews</span>
+
+                                        <!-- Star Rating -->
+                                        <div class="flex items-center mt-2">
+                                            <div class="flex items-center">
+                                                @php
+                                                    $averageRating = $product->reviews_avg_rating ?? 0;
+                                                    $fullStars = floor($averageRating);
+                                                    $halfStars = $averageRating - $fullStars >= 0.5 ? 1 : 0;
+                                                    $emptyStars = 5 - ($fullStars + $halfStars);
+                                                @endphp
+                                                @for ($i = 0; $i < $fullStars; $i++)
+                                                    <i class='text-yellow-500 bx bxs-star'></i>
+                                                @endfor
+                                                @if ($halfStars)
+                                                    <i class='text-yellow-500 bx bxs-star-half'></i>
+                                                @endif
+                                                @for ($i = 0; $i < $emptyStars; $i++)
+                                                    <i class='text-yellow-500 bx bx-star'></i>
+                                                @endfor
+                                            </div>
+                                            <span
+                                                class="ml-2 text-sm text-yellow-500">{{ number_format($averageRating, 1) }}</span>
+                                            <span class="ml-2 text-sm text-gray-400">{{ $product->reviews->count() }}
+                                                reviews</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                    @endforeach
+                            </a>
+                        @endforeach
+                    </div>
+
                 </div>
-            </div>
+
+                {{-- create button for explore more for each categories --}}
+                <div class="flex justify-end mb-2 wow animate__animated animate__fadeInUp">
+                    <a href="{{ route('categoryproduct', $category->id) }}"
+                        class="px-4 py-2 text-sm font-semibold transition-transform duration-300 bg-yellow-700  text-white rounded-lg shadow-lg sm:px-6 sm:py-3 sm:text-base hover:bg-[#9a031fdd] hover:scale-105">
+                        Explore More
+                        {{-- boxicon  --}}
+                        <i class='bx bx-right-arrow-alt'></i>
+                    </a>
+                </div>
+            @endif
         @endforeach
     </div>
 
@@ -338,4 +357,8 @@
             transform: scale(1.05);
         }
     </style>
+
+    <script>
+        new WOW().init();
+    </script>
 @endsection

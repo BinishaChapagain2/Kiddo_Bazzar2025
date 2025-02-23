@@ -27,13 +27,7 @@
                             <p class="text-sm"><strong>Price:</strong> Rs.{{ number_format($order->price, 2) }}</p>
                             <p class="text-sm"><strong>Payment Method:</strong> {{ $order->payment_method }}</p>
                             <p class="text-sm"><strong>Order Date:</strong> {{ $order->created_at->format('d-m-Y') }}</p>
-                            {{-- <p class="mt-2 text-sm font-semibold">
-                                <span
-                                    class="inline-block px-3 py-1 text-xs font-bold rounded-full
-                                    {{ $order->status == 'Pending' ? 'bg-yellow-500 text-white' : ($order->status == 'Shipping' ? 'bg-blue-500 text-white' : ($order->status == 'Processing' ? 'bg-orange-500 text-white' : ($order->status == 'Completed' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'))) }}">
-                                    {{ $order->status }}
-                                </span>
-                            </p> --}}
+
                         </div>
                         <div class="flex items-center justify-between mt-6">
                             <button onclick="showPopup('{{ $order->id }}')"

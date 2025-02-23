@@ -18,7 +18,7 @@ class PagesController extends Controller
 
         $categories = Category::all();
         $products = Product::where('status', 'show')
-            // ->where('stock', '>', 0) // Ensure stock is greater than 0
+            ->where('stock', '>', 0) // Ensure stock is greater than 0
             ->with(['reviews', 'reviews:id,product_id,rating']) // Load reviews and only necessary fields
             ->withAvg('reviews', 'rating') // Calculate the average rating
             ->latest()
@@ -91,7 +91,9 @@ class PagesController extends Controller
 
         // Initial query to get products for the category with reviews
         $query = Product::where('category_id', $categoryId)
+
             ->where('status', 'show')
+            ->where('stock', '>', 0) // Ensure stock is greater than 0
             ->with(['reviews', 'reviews:id,product_id,rating']) // Eager load reviews
             ->withAvg('reviews', 'rating');
 
@@ -120,7 +122,7 @@ class PagesController extends Controller
         }
 
         // Get the filtered products with pagination
-        $products = $query->paginate(5);
+        $products = $query->paginate(10);
 
         // Fetch unique values for filters
         $seasons = Product::where('category_id', $categoryId)->pluck('season')->unique();
@@ -139,13 +141,27 @@ class PagesController extends Controller
     public function checkout($cartid)
     {
         $cart = Cart::find($cartid);
-        if ($cart->product->discounted_price == '') {
+
+        // Check if the cart exists
+        if (!$cart) {
+            return redirect()->back()->with('error', 'Cart not found.');
+        }
+
+        // Check if the product exists
+        if (!$cart->product) {
+            return redirect()->back()->with('error', 'Product not found in the cart.');
+        }
+
+        // Calculate total based on discount availability
+        if (empty($cart->product->discounted_price)) {
             $cart->total = $cart->product->price * $cart->qty;
         } else {
             $cart->total = $cart->product->discounted_price * $cart->qty;
         }
+
         return view('checkout', compact('cart'));
     }
+
 
 
     public function search(Request $request)

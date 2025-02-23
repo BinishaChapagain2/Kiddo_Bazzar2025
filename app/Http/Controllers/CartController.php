@@ -44,10 +44,14 @@ class CartController extends Controller
 
         // calculate the total price of the product in the cart based on the quantity, uses the products price if no discount is available
         foreach ($carts as $cart) {
-            if ($cart->product->discounted_price == '') {
-                $cart->total = $cart->product->price * $cart->qty;
+            if ($cart->product) { // Check if product exists
+                if (empty($cart->product->discounted_price)) { // Check if discounted_price is empty
+                    $cart->total = $cart->product->price * $cart->qty;
+                } else {
+                    $cart->total = $cart->product->discounted_price * $cart->qty;
+                }
             } else {
-                $cart->total = $cart->product->discounted_price * $cart->qty;
+                $cart->total = 0; // If product is null, set total to 0 or handle accordingly
             }
         }
         return view('mycart', compact('carts'));

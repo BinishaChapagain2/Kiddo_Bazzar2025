@@ -20,8 +20,8 @@ class DashboardController extends Controller
         $pending = Order::where('status', 'Pending')->count();
         $processing = Order::where('status', 'Processing')->count();
         $shipping = Order::where('status', 'Shipping')->count();
-        $completed = Order::where('status', 'completed')->count();
-        return view('dashboard', compact('categories', 'products', 'pending', 'processing', 'shipping', 'completed', 'users', 'order'));
+        $delivered = Order::where('status', 'Delivered')->count();
+        return view('dashboard', compact('categories', 'products', 'pending', 'processing', 'shipping', 'delivered', 'users', 'order'));
     }
     //report
     public function report()
@@ -33,9 +33,9 @@ class DashboardController extends Controller
         $pending = Order::where('status', 'Pending')->count();
         $processing = Order::where('status', 'Processing')->count();
         $shipping = Order::where('status', 'Shipping')->count();
-        $completed = Order::where('status', 'completed')->count();
+        $delivered = Order::where('status', 'Delivered')->count();
 
 
-        return view('report', compact('categories', 'products', 'pending', 'processing', 'shipping', 'completed', 'users', 'order'));
+        return view('report', compact('categories', 'products', 'pending', 'processing', 'shipping', 'delivered', 'users', 'order'));
     }
 }

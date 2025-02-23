@@ -93,7 +93,7 @@
                     <i class="bx bx-check-circle text-5xl text-[#9a031f]"></i>
                     <div class="flex flex-col text-center lg:text-left">
                         <h2 class="text-xl font-semibold text-[#9a031f]">Completed Orders</h2>
-                        <p class="text-4xl font-bold text-[#9a031f]">{{ $completed }}</p>
+                        <p class="text-4xl font-bold text-[#9a031f]">{{ $delivered }}</p>
                     </div>
                 </div>
             </div>

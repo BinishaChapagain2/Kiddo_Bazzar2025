@@ -32,10 +32,10 @@
     <script>
         // Pie Chart Data and Configuration
         const pieData = {
-            labels: ["Pending", "Processing", "Shipping", "Completed"],
+            labels: ["Pending", "Processing", "Shipping", "Delivered"],
             datasets: [{
                 label: "Order Status",
-                data: [{{ $pending }}, {{ $processing }}, {{ $shipping }}, {{ $completed }}],
+                data: [{{ $pending }}, {{ $processing }}, {{ $shipping }}, {{ $delivered }}],
                 backgroundColor: ["rgb(90, 50, 241)", "rgb(101, 143, 200)", "rgb(0, 200, 20)",
                     "rgb(150, 143, 0)"
                 ],
@@ -49,10 +49,10 @@
 
         // Bar Chart Data and Configuration
         const barData = {
-            labels: ["Pending", "Processing", "Shipping", "Completed"],
+            labels: ["Pending", "Processing", "Shipping", "Delivered"],
             datasets: [{
                 label: "Order Status",
-                data: [{{ $pending }}, {{ $processing }}, {{ $shipping }}, {{ $completed }}],
+                data: [{{ $pending }}, {{ $processing }}, {{ $shipping }}, {{ $delivered }}],
                 backgroundColor: ["rgba(90, 50, 241, 0.7)", "rgba(101, 143, 200, 0.7)", "rgba(0, 200, 20, 0.7)",
                     "rgba(150, 143, 0, 0.7)"
                 ],
@@ -65,10 +65,10 @@
 
         // Line Chart Data and Configuration
         const lineData = {
-            labels: ["Pending", "Processing", "Shipping", "Completed"],
+            labels: ["Pending", "Processing", "Shipping", "Delivered"],
             datasets: [{
                 label: "Order Status",
-                data: [{{ $pending }}, {{ $processing }}, {{ $shipping }}, {{ $completed }}],
+                data: [{{ $pending }}, {{ $processing }}, {{ $shipping }}, {{ $delivered }}],
                 borderColor: "rgb(75, 192, 192)",
                 fill: false,
                 tension: 0.1,

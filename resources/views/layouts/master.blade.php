@@ -21,6 +21,17 @@
 
     {{-- favicon --}}
     <link rel="icon" href="{{ asset('images/kiddo_bazzar_logo.png') }}" type="image/png">
+
+
+    {{-- wow js cdn --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
+        integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    {{-- animated css cdn --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+
     <style>
         * {
             padding: 0;
@@ -371,7 +382,7 @@
                 </ul>
                 <p class="text-sm text-center md:text-right">
                     © {{ date('Y') }} Kiddo Bazzar. All rights reserved. | Developed by:
-                    <a href="#" class="underline hover:text-gray-300">Binisha Chapagain</a>
+                    <a href="#" class="underline hover:text-gray-300">Arun Pandey Laudari</a>
                 </p>
             </div>
         </div>
@@ -397,6 +408,9 @@
         document.getElementById('mobile-search-button').addEventListener('click', function() {
             document.getElementById('mobile-search-bar').classList.toggle('hidden');
         });
+
+
+        new WOW().init();
     </script>
 
 </body>

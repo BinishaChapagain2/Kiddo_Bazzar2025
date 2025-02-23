@@ -39,6 +39,13 @@ class product extends Model
 
     public function category()
     {
+
         return $this->belongsTo(Category::class);
+    }
+
+    //cart relation
+    public function cart()
+    {
+        return $this->hasMany(Cart::class);
     }
 }

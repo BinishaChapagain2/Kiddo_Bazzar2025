@@ -23,7 +23,7 @@ class OrderController extends Controller
         $data = $request->data;
         $data = base64_decode($data);
         $data = json_decode($data);
-        if ($data->status == 'COMPLETE') {
+        if ($data->status == 'Delivered') {
             //store order here
             $cart = Cart::find($cartid);
 
@@ -94,6 +94,8 @@ class OrderController extends Controller
 
         $cart->delete();
         return redirect(route('home'))->with('success', 'Order placed successfully')->with('successdelivered', 'Order is placed successfully');
+
+        // ->with('successdelivered', 'Order is placed successfully')
     }
 
 
@@ -103,17 +105,26 @@ class OrderController extends Controller
         $order = Order::find($id);
         $order->status = $status;
         $order->save();
-        //send mail to user
+
+        // Send mail to user
         $data = [
             'name' => $order->name,
             'status' => $status,
         ];
+
         Mail::send('mail.order', $data, function ($message) use ($order) {
             $message->to($order->user->email, $order->name)
                 ->subject('Order Status');
         });
+
+        // If the order is delivered, set a session alert
+        if ($status == 'Delivered') {
+            return redirect('home')->with('successdelivered', 'Your order has been delivered successfully.');
+        }
+
         return back()->with('success', 'Order is now ' . $status);
     }
+
 
     public function myorder()
     {

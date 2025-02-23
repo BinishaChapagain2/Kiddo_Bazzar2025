@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\BannerController;
-use App\Http\Controllers\BuyNowController;
+use App\Http\Controllers\BuynowController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
@@ -45,6 +45,11 @@ Route::middleware('auth')->group(function () {
     //delete order history
     Route::delete('cancelhistory/destroy', [OrderController::class, 'orderhistorydestroy'])->name('cancelhistory.destroy');
 
+    //buynow
+    Route::post('/buy-now/{product}', [BuynowController::class, 'buyNow'])->name('buynow.buy');
+    Route::get('/checkout', [BuynowController::class, 'checkout'])->name('buynow.checkout');
+    Route::post('/place-order', [BuynowController::class, 'placeOrder'])->name('buynow.placeOrder');
+    Route::get('/store/{productid}/{qty}', [BuynowController::class, 'store'])->name('buynow.store'); // Adjust to POST
 
 
 

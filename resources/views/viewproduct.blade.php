@@ -28,11 +28,13 @@
                 <form action="{{ route('cart.store') }}" method="POST" class="mt-5">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
-                    <div class="flex items-center space-x-1">
-                        <button class="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300" onclick="return dec()">-</button>
-                        <input type="text" class="px-4 py-2 text-center bg-gray-100 border-none w-14" value="1"
-                            id="qty" name="qty" readonly>
-                        <button class="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300" onclick="return inc()">+</button>
+                    <!-- Quantity Selector -->
+                    <div class="flex items-center mt-4 space-x-2 md:mt-6">
+                        <button class="px-2 py-2 text-xs text-white bg-yellow-600 rounded-l md:text-base dec-btn">-</button>
+                        <input type="text"
+                            class="w-10 h-10 text-xs text-center bg-gray-200 border-none qty sm:w-12 md:w-14 md:text-base"
+                            value="1" readonly name="qty">
+                        <button class="px-2 py-2 text-xs text-white bg-yellow-600 rounded-r md:text-base inc-btn">+</button>
                     </div>
                     <p class="mt-2 text-gray-500">In Stock: {{ $product->stock }}</p>
 
@@ -76,16 +78,31 @@
                             Add to Cart <i class="text-lg bx bx-cart"></i>
                         </button>
                     @else
-                        <button type="submit" class="bg-[#9a031fdd] text-white px-4 py-2 mt-5 rounded">
-                            Add to Cart <i class="text-lg bx bx-cart"></i>
-                        </button>
+                        <div class="flex mt-4 space-x-1 md:mt-6">
+                            <!-- Add to Cart -->
+                            <form action="{{ route('cart.store') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <input type="hidden" name="qty" class="hidden-qty" value="1">
+                                <button type="submit"
+                                    class="flex items-center justify-center px-4 py-2 text-xs  text-white transition duration-300 ease-in-out bg-[#9a031fdd] rounded shadow md:px-6 md:py-3 md:text-base hover:bg-yellow-700">
+                                    <i class='mr-2 bx bx-cart-add'></i> Add to Cart
+                                </button>
+                            </form>
+
+                            <!-- Buy Now -->
+                            <form action="{{ route('buynow.buy', $product->id) }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <input type="hidden" name="qty" class="hidden-qty" value="1">
+                                <button type="submit"
+                                    class="flex items-center justify-center px-4 py-2 text-xs text-white transition duration-300 ease-in-out bg-green-600 rounded shadow md:px-6 md:py-3 md:text-base hover:bg-green-900">
+                                    <i class='mr-2 bx bx-credit-card'></i> Buy Now
+                                </button>
+                            </form>
+                        </div>
                     @endif
-                    {{--
-                    <button type="submit"
-                        class="flex items-center px-6 py-3 mt-4 space-x-2 text-white bg-[#9a031fdd] rounded-md  ">
-                        <span class="text-lg">Add to Cart</span>
-                        <i class="text-lg bx bx-cart"></i>
-                    </button> --}}
+
 
                 </form>
             </div>
@@ -168,6 +185,7 @@
         {{-- allow auth user to give review --}}
 
 
+
         @guest
             <div class="px-4 mt-5 lg:px-16">
                 <p class="text-sm text-gray-600">Please <a href="{{ route('login') }}" class="text-yellow-500 underline">log
@@ -196,7 +214,8 @@
                 {{-- Ensure this matches the variable passed from the controller --}}
                 <a href="{{ route('viewproduct', $rproduct->id) }}" class="flex-shrink-0">
                     <!-- Product card with fixed min-width for small/medium devices -->
-                    <div class="overflow-hidden border rounded-lg shadow-lg min-w-[16rem]">
+                    <div
+                        class="overflow-hidden border rounded-lg shadow-lg min-w-[16rem]  wow animate__animated animate__zoomIn">
                         <img src="{{ asset('images/products/' . $rproduct->photopath) }}" alt="{{ $rproduct->name }}"
                             class="object-cover w-full h-64">
                         <div class="p-4">
@@ -252,20 +271,33 @@
     </div>
 
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
-        function inc() {
-            let qty = document.getElementById('qty');
-            if (parseInt(qty.value) < {{ $product->stock }})
-                qty.value = parseInt(qty.value) + 1;
-            return false;
-        }
+        $(document).ready(function() {
+            $('.inc-btn').click(function(e) {
+                e.preventDefault();
+                let qty = $(this).siblings('.qty');
+                let newQty = parseInt(qty.val()) + 1;
+                let maxStock = {{ $product->stock }};
+                if (newQty <= maxStock) {
+                    qty.val(newQty);
+                    $('.hidden-qty').val(newQty);
+                }
+            });
 
-        function dec() {
-            let qty = document.getElementById('qty');
-            if (parseInt(qty.value) > 1)
-                qty.value = parseInt(qty.value) - 1;
-            return false;
-        }
+            $('.dec-btn').click(function(e) {
+                e.preventDefault();
+                let qty = $(this).siblings('.qty');
+                let newQty = parseInt(qty.val()) - 1;
+                if (newQty >= 1) {
+                    qty.val(newQty);
+                    $('.hidden-qty').val(newQty);
+                }
+            });
+        });
+
+
+        new WOW().init();
     </script>
 @endsection

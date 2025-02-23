@@ -64,10 +64,7 @@
                         <button type="submit"
                             class="w-full text-white bg-[#9a031fdd] font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign
                             in</button>
-                        <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                            Don’t have an account yet? <a href="#"
-                                class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
-                        </p>
+
                     </form>
                 </div>
             </div>

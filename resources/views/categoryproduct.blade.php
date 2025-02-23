@@ -13,7 +13,7 @@
         <div
             class="flex flex-col justify-between p-4 mb-5 border rounded-lg shadow-md bg-gray-50 lg:flex-row lg:items-center lg:gap-6">
             <form action="{{ route('categoryproduct', $category->id) }}" method="GET" class="flex flex-wrap w-full gap-4">
-                <div class="flex items-center w-full lg:w-auto">
+                <div class="flex items-center w-full lg:w-auto ">
                     <label for="season" class="mr-2 text-sm font-semibold text-gray-700">Season:</label>
                     <select name="season" id="season"
                         class="w-full lg:w-48 p-2 text-gray-700 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#80a359]">
@@ -110,7 +110,8 @@
             @forelse ($products as $rproduct)
                 <a href="{{ route('viewproduct', $rproduct->id) }}" class="flex-shrink-0">
                     <!-- Product card with fixed min-width for small/medium devices -->
-                    <div class="overflow-hidden  border rounded-lg shadow-lg min-w-[16rem]">
+                    <div
+                        class="overflow-hidden  border rounded-lg shadow-lg min-w-[16rem] wow animate__animated animate__zoomIn">
                         <img src="{{ asset('images/products/' . $rproduct->photopath) }}" alt="{{ $rproduct->name }}"
                             class="object-cover w-full h-64">
                         <div class="p-4">
