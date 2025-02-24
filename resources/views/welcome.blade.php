@@ -16,6 +16,12 @@
         @if ($hasPendingReview)
             @foreach ($productPendingReviews->take(1) as $order)
                 @include('layouts.reviewalert') {{-- This includes your review popup --}}
+
+                {{-- and update the is_review to true  --}}
+                @php
+                    $order->is_review = true;
+                    $order->save();
+                @endphp
             @endforeach
         @endif
     @endauth

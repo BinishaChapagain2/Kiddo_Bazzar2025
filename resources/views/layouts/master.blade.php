@@ -69,7 +69,7 @@
 
 <body class="text-gray-800 bg-gray-50">
     @include('layouts.alert')
- 
+
 
 
     <!-- Header -->
@@ -382,7 +382,7 @@
                 </ul>
                 <p class="text-sm text-center md:text-right">
                     © {{ date('Y') }} Kiddo Bazzar. All rights reserved. | Developed by:
-                    <a href="#" class="underline hover:text-gray-300">Arun Pandey Laudari</a>
+                    <a href="#" class="underline hover:text-gray-300">Binisha Chapagain</a>
                 </p>
             </div>
         </div>

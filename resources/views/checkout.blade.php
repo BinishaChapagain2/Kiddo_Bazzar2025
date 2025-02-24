@@ -39,34 +39,36 @@
                 </div>
 
                 <!-- eSewa Payment Option -->
-                <div class="p-6 transition duration-300 shadow-lg bg-gray-50 rounded-xl hover:shadow-2xl">
-                    <h3 class="flex items-center mb-4 text-xl font-bold text-green-600">
-                        <i class="mr-2 text-3xl bx bx-wallet"></i> Pay with eSewa
+                <div class="p-5 bg-white rounded-lg shadow-md">
+                    <h3 class="flex items-center mb-4 text-xl font-semibold text-[#039a05ed]">
+                        <i class="mr-2 text-2xl bx bx-wallet"></i> Pay with eSewa
                     </h3>
                     <form action="https://rc-epay.esewa.com.np/api/epay/main/v2/form" method="POST">
-                        <input type="hidden" id="amount" name="amount" value="{{ $cart->total }}">
-                        <input type="hidden" id="tax_amount" name="tax_amount" value="0">
-                        <input type="hidden" id="total_amount" name="total_amount" value="{{ $cart->total }}">
-                        <input type="hidden" id="transaction_uuid" name="transaction_uuid">
-                        <input type="hidden" id="product_code" name="product_code" value="EPAYTEST">
-                        <input type="hidden" id="product_service_charge" name="product_service_charge" value="0">
-                        <input type="hidden" id="product_delivery_charge" name="product_delivery_charge" value="0">
+                        <input type="hidden" id="amount" name="amount" value="{{ $cart->total }}" required>
+                        <input type="hidden" id="tax_amount" name="tax_amount" value="0" required>
+                        <input type="hidden" id="total_amount" name="total_amount" value="{{ $cart->total }}" required>
+                        <input type="hidden" id="transaction_uuid" name="transaction_uuid" required>
+                        <input type="hidden" id="product_code" name="product_code" value="EPAYTEST" required>
+                        <input type="hidden" id="product_service_charge" name="product_service_charge" value="0"
+                            required>
+                        <input type="hidden" id="product_delivery_charge" name="product_delivery_charge" value="0"
+                            required>
                         <input type="hidden" id="success_url" name="success_url"
-                            value="{{ route('order.store', $cart->id) }}">
-                        <input type="hidden" id="failure_url" name="failure_url" value="https://google.com">
+                            value="{{ route('order.store', $cart->id) }}" required>
+                        <input type="hidden" id="failure_url" name="failure_url" value="https://google.com" required>
                         <input type="hidden" id="signed_field_names" name="signed_field_names"
-                            value="total_amount,transaction_uuid,product_code">
-                        <input type="hidden" id="signature" name="signature">
+                            value="total_amount,transaction_uuid,product_code" required>
+                        <input type="hidden" id="signature" name="signature" required>
+                        <!-- Submit Button -->
                         <button type="submit"
-                            class="w-full py-3 font-semibold text-white transition duration-300 bg-green-500 rounded-lg hover:bg-green-600">
-                            Pay Securely with eSewa
+                            class="w-full px-5 py-3 text-white transition duration-300 bg-[#039a05d0] rounded-lg hover:bg-[#039a05]">
+                            Pay with eSewa
                         </button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
     @php
         $transaction_uuid = auth()->id() . time();
         $totalamount = $cart->total;
