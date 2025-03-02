@@ -6,12 +6,12 @@
         </div>
 
         <div class="mx-3 mt-5">
-            <!-- Responsive grid for all devices -->
+            {{-- Responsive grid for all devices  --}}
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                <!-- Product Loop -->
+                {{-- Product Loop --}}
                 @forelse ($products as $product)
                     <a href="{{ route('viewproduct', $product->id) }}" class="flex flex-col">
-                        <!-- Product card with responsive design -->
+                        {{-- Product card with responsive design --}}
                         <div
                             class="overflow-hidden transition-transform duration-200 border rounded-lg shadow-lg hover:scale-105">
                             <img src="{{ asset('images/products/' . $product->photopath) }}" alt="{{ $product->name }}"

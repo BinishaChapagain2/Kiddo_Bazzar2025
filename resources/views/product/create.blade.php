@@ -9,7 +9,7 @@
 
         </div>
         <hr class="my-2 border-b-2 border-yellow-500">
-        <!-- Product Form -->
+        {{-- Product Form  --}}
         <form action="{{ route('product.store') }}" method="POST" class="space-y-4" enctype="multipart/form-data">
             @csrf
 

@@ -3,7 +3,7 @@
 @section('content')
     <div class="py-5 ">
         <div class="container px-6 mx-auto text-center text-white">
-            <!-- Hero Section -->
+            {{-- Hero Section --}}
             <div class="relative mb-16">
                 <img src="{{ asset('images/diwali2.webp') }}" alt="Why Kiddo Bazar"
                     class="object-cover w-full  shadow-lg h-[500px] transform transition-all hover:scale-105">
@@ -12,7 +12,7 @@
                 </div>
             </div>
 
-            <!-- Value Proposition Section -->
+            {{-- Value Proposition Section --}}
             <div class="px-4 mb-12 md:px-8">
                 <p class="max-w-full mx-auto text-xl leading-relaxed text-black">
                     At <strong class="text-[#9a031fdd]">Kiddo Bazar</strong>, we prioritize your child’s happiness, safety,
@@ -24,11 +24,11 @@
         </div>
     </div>
 
-    <!-- Key Reasons Section -->
+    {{-- Key Reasons Section --}}
     <div class="py-20 bg-white">
         <div class="container px-6 mx-auto">
             <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
-                <!-- Reason 1 -->
+                {{-- Reason 1 --}}
                 <div class="p-8 transition duration-300 transform bg-gray-200 shadow-lg rounded-3xl hover:scale-105">
                     <h3 class="mb-4 text-2xl font-semibold text-[#9a031fdd]">Quality & Safety First</h3>
                     <p class="text-lg text-black">
@@ -37,7 +37,7 @@
                     </p>
                 </div>
 
-                <!-- Reason 2 -->
+                {{-- Reason 2 --}}
                 <div class="p-8 transition duration-300 transform bg-gray-200 shadow-lg rounded-2xl hover:scale-105">
                     <h3 class="mb-4 text-2xl font-semibold text-[#9a031fdd]">Affordable Prices</h3>
                     <p class="text-lg text-black">
@@ -46,7 +46,7 @@
                     </p>
                 </div>
 
-                <!-- Reason 3 -->
+                {{-- Reason 3 --}}
                 <div class="p-8 transition duration-300 transform bg-gray-200 shadow-lg rounded-2xl hover:scale-105">
                     <h3 class="mb-4 text-2xl font-semibold text-[#9a031fdd]">Curated for Every Age</h3>
                     <p class="text-lg text-black">
@@ -55,7 +55,7 @@
                     </p>
                 </div>
 
-                <!-- Reason 4 -->
+                {{-- Reason 4 --}}
                 <div class="p-8 transition duration-300 transform bg-gray-200 shadow-lg rounded-2xl hover:scale-105">
                     <h3 class="mb-4 text-2xl font-semibold text-[#9a031fdd]">Fast & Reliable Delivery</h3>
                     <p class="text-lg text-black">
@@ -64,7 +64,7 @@
                     </p>
                 </div>
 
-                <!-- Reason 5 -->
+                {{-- Reason 5 --}}
                 <div class="p-8 transition duration-300 transform bg-gray-200 shadow-lg rounded-2xl hover:scale-105">
                     <h3 class="mb-4 text-2xl font-semibold text-[#9a031fdd]">Exceptional Customer Support</h3>
                     <p class="text-lg text-black">
@@ -73,7 +73,7 @@
                     </p>
                 </div>
 
-                <!-- Reason 6 -->
+                {{-- Reason 6 --}}
                 <div class="p-8 transition duration-300 transform bg-gray-200 shadow-lg rounded-2xl hover:scale-105">
                     <h3 class="mb-4 text-2xl font-semibold text-[#9a031fdd]">Sustainable & Eco-Friendly</h3>
                     <p class="text-lg text-black">

@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="container py-12 mx-auto">
-        <!-- Checkout Container -->
+        {{-- Checkout Container  --}}
         <div
             class="grid max-w-5xl mx-auto overflow-hidden bg-white shadow-2xl rounded-2xl lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2">
-            <!-- Product Information -->
+            {{-- Product Information --}}
             <div class="p-8 bg-gray-100">
                 <h3 class="text-2xl font-bold text-center text-[#9a031f] mb-8">Product Overview</h3>
                 <div class="flex flex-col items-center gap-4">
@@ -21,9 +21,9 @@
                 </div>
             </div>
 
-            <!-- Payment Options -->
+            {{-- Payment Options --}}
             <div class="flex flex-col justify-center p-10 bg-white">
-                <!-- Cash on Delivery Option -->
+                {{-- Cash on Delivery Option --}}
                 <div class="p-6 mb-8 transition duration-300 shadow-lg bg-gray-50 rounded-xl hover:shadow-2xl">
                     <h3 class="flex items-center mb-4 text-xl font-bold text-yellow-600">
                         <i class="mr-2 text-3xl bx bx-package"></i> Cash On Delivery
@@ -38,7 +38,7 @@
                     </form>
                 </div>
 
-                <!-- eSewa Payment Option -->
+                {{-- eSewa Payment Option --}}
                 <div class="p-5 bg-white rounded-lg shadow-md">
                     <h3 class="flex items-center mb-4 text-xl font-semibold text-[#039a05ed]">
                         <i class="mr-2 text-2xl bx bx-wallet"></i> Pay with eSewa
@@ -59,7 +59,7 @@
                         <input type="hidden" id="signed_field_names" name="signed_field_names"
                             value="total_amount,transaction_uuid,product_code" required>
                         <input type="hidden" id="signature" name="signature" required>
-                        <!-- Submit Button -->
+                        {{-- Submit Button --}}
                         <button type="submit"
                             class="w-full px-5 py-3 text-white transition duration-300 bg-[#039a05d0] rounded-lg hover:bg-[#039a05]">
                             Pay with eSewa

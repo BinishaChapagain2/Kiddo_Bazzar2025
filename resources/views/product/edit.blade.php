@@ -6,7 +6,7 @@
             <span class="text-3xl font-semibold ml-5 text-[#9a031f] lg:font-bold lg:text-4xl">Product</span>
         </div>
         <hr class="my-2 border-b-2 border-yellow-500">
-        <!-- Product Form FOR EDIT -->
+        {{-- Product Form FOR EDIT  --}}
         <form action="{{ route('product.update', $product->id) }}" method="POST" class="space-y-4"
             enctype="multipart/form-data">
             @csrf

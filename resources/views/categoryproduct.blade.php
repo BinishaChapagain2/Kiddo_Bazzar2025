@@ -8,8 +8,8 @@
         </div>
 
 
-        <!-- Filter Section -->
-        <!-- Filter Section -->
+
+        {{-- Filter Section --}}
         <div
             class="flex flex-col justify-between p-4 mb-5 border rounded-lg shadow-md bg-gray-50 lg:flex-row lg:items-center lg:gap-6">
             <form action="{{ route('categoryproduct', $category->id) }}" method="GET" class="flex flex-wrap w-full gap-4">
@@ -105,11 +105,11 @@
         </div>
 
 
-        <!-- Product Grid -->
+        {{-- Display the products --}}
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             @forelse ($products as $rproduct)
                 <a href="{{ route('viewproduct', $rproduct->id) }}" class="flex-shrink-0">
-                    <!-- Product card with fixed min-width for small/medium devices -->
+                    {{-- Product card with fixed min-width for small/medium devices --}}
                     <div
                         class="overflow-hidden  border rounded-lg shadow-lg min-w-[16rem] wow animate__animated animate__zoomIn">
                         <img src="{{ asset('images/products/' . $rproduct->photopath) }}" alt="{{ $rproduct->name }}"

@@ -4,14 +4,14 @@
     <div class="bg-[#F5F5F5] py-16">
         <div class="container px-6 mx-auto text-gray-700">
 
-            <!-- Page Title -->
+            {{-- Page Title --}}
             <div class="mb-8 text-center">
                 <h1 class="text-4xl font-semibold text-[#9a031fdd]">Terms and Conditions</h1>
                 <p class="mt-2 text-lg text-gray-500">Please read these terms and conditions carefully before using our
                     website.</p>
             </div>
 
-            <!-- Introduction Section -->
+            {{-- Introduction Section --}}
             <div class="mb-12">
                 <p class="text-base leading-relaxed text-gray-700 sm:text-lg md:text-xl">
                     Welcome to Kiddo Bazar. By accessing and using our website, you agree to comply with and be bound by the
@@ -20,7 +20,7 @@
                 </p>
             </div>
 
-            <!-- General Terms -->
+            {{-- General Terms --}}
             <div class="mb-12">
                 <h2 class="text-2xl font-semibold text-[#9a031fdd]">1. General Terms</h2>
                 <p class="mt-4 text-base leading-relaxed text-gray-700 sm:text-lg md:text-xl">
@@ -30,7 +30,7 @@
                 </p>
             </div>
 
-            <!-- User Account -->
+            {{-- User Account --}}
             <div class="mb-12">
                 <h2 class="text-2xl font-semibold text-[#9a031fdd]">2. User Accounts</h2>
                 <p class="mt-4 text-base leading-relaxed text-gray-700 sm:text-lg md:text-xl">
@@ -40,7 +40,7 @@
                 </p>
             </div>
 
-            <!-- Products and Services -->
+            {{-- Products and Services --}}
             <div class="mb-12">
                 <h2 class="text-2xl font-semibold text-[#9a031fdd]">3. Products and Services</h2>
                 <p class="mt-4 text-base leading-relaxed text-gray-700 sm:text-lg md:text-xl">
@@ -50,7 +50,7 @@
                 </p>
             </div>
 
-            <!-- Pricing and Payment -->
+            {{-- Pricing and Payment --}}
             <div class="mb-12">
                 <h2 class="text-2xl font-semibold text-[#9a031fdd]">4. Pricing and Payment</h2>
                 <p class="mt-4 text-base leading-relaxed text-gray-700 sm:text-lg md:text-xl">
@@ -60,7 +60,7 @@
                 </p>
             </div>
 
-            <!-- Shipping and Delivery -->
+            {{-- Shipping and Delivery --}}
             <div class="mb-12">
                 <h2 class="text-2xl font-semibold text-[#9a031fdd]">5. Shipping and Delivery</h2>
                 <p class="mt-4 text-base leading-relaxed text-gray-700 sm:text-lg md:text-xl">
@@ -70,7 +70,7 @@
                 </p>
             </div>
 
-            <!-- Returns and Refunds -->
+            {{--  Returns and Refunds  --}}
             <div class="mb-12">
                 <h2 class="text-2xl font-semibold text-[#9a031fdd]">6. Returns and Refunds</h2>
                 <p class="mt-4 text-base leading-relaxed text-gray-700 sm:text-lg md:text-xl">
@@ -81,7 +81,7 @@
                 </p>
             </div>
 
-            <!-- User Responsibilities -->
+            {{-- User Responsibilities --}}
             <div class="mb-12">
                 <h2 class="text-2xl font-semibold text-[#9a031fdd]">7. User Responsibilities</h2>
                 <p class="mt-4 text-base leading-relaxed text-gray-700 sm:text-lg md:text-xl">
@@ -94,7 +94,7 @@
                 </p>
             </div>
 
-            <!-- Limitation of Liability -->
+            {{-- Limitation of Liability  --}}
             <div class="mb-12">
                 <h2 class="text-2xl font-semibold text-[#9a031fdd]">8. Limitation of Liability</h2>
                 <p class="mt-4 text-base leading-relaxed text-gray-700 sm:text-lg md:text-xl">
@@ -105,7 +105,7 @@
                 </p>
             </div>
 
-            <!-- Privacy and Data Protection -->
+            {{-- Privacy and Data Protection --}}
             <div class="mb-12">
                 <h2 class="text-2xl font-semibold text-[#9a031fdd]">9. Privacy and Data Protection</h2>
                 <p class="mt-4 text-base leading-relaxed text-gray-700 sm:text-lg md:text-xl">
@@ -115,7 +115,7 @@
                 </p>
             </div>
 
-            <!-- Governing Law -->
+            {{-- Governing Law --}}
             <div class="mb-12">
                 <h2 class="text-2xl font-semibold text-[#9a031fdd]">10. Governing Law</h2>
                 <p class="mt-4 text-base leading-relaxed text-gray-700 sm:text-lg md:text-xl">
@@ -124,7 +124,7 @@
                 </p>
             </div>
 
-            <!-- Contact Information -->
+            {{-- Contact Information  --}}
             <div class="mb-12">
                 <h2 class="text-2xl font-semibold text-[#9a031fdd] ">11. Contact Information</h2>
                 <p class="mt-4 text-base leading-relaxed text-gray-700 sm:text-lg md:text-xl">

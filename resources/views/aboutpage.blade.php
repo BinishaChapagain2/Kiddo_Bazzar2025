@@ -13,14 +13,14 @@
                 </h1>
             </div>
 
-            <!-- Image Section -->
+            {{-- Image Section --}}
 
             <img src="{{ asset('images/firstsliderpic.webp') }}" alt="About Us Image"
                 class="top-0 object-cover w-full rounded-lg h-96">
 
 
 
-            <!-- Description Section -->
+            {{-- Description Section --}}
             <div class="mt-12">
                 <p class="max-w-full text-lg leading-relaxed text-justify text-gray-700 ">
                     Welcome to <strong class="text-[#9a031fdd]">Kiddo Bazar</strong>, your one-stop online destination for
@@ -30,7 +30,7 @@
                 </p>
             </div>
 
-            <!-- Mission Section -->
+            {{-- Mission Section --}}
             <div class="mt-16">
                 <h3 class="text-3xl font-semibold text-[#9a031fdd] mb-4">Our Mission</h3>
                 <p class="max-w-full text-lg leading-relaxed text-justify text-gray-700">
@@ -41,7 +41,7 @@
                 </p>
             </div>
 
-            <!-- Vision Section -->
+            {{-- Vision Section  --}}
             <div class="mt-16">
                 <h3 class="text-3xl font-semibold text-[#9a031fdd] mb-4">Our Vision</h3>
                 <p class="max-w-full text-lg leading-relaxed text-justify text-gray-700">

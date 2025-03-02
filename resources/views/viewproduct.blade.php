@@ -2,15 +2,15 @@
 
 @section('content')
     <div class="mx-auto mt-5 ">
-        <!-- Product Details Grid -->
+        {{-- Product Details Grid --}}
         <div class="grid grid-cols-1 gap-6 px-4 lg:px-16 md:grid-cols-4">
-            <!-- Product Image -->
+            {{-- Product Image --}}
             <div class="md:col-span-1">
                 <img src="{{ asset('images/products/' . $product->photopath) }}" alt="{{ $product->name }}"
                     class="object-cover w-full transition-transform duration-300 transform rounded-lg shadow-lg h-72 md:h-96 hover:scale-105">
             </div>
 
-            <!-- Product Info -->
+            {{-- Product Info --}}
             <div class="col-span-2 px-4 border-gray-200 border-x">
 
 
@@ -24,7 +24,7 @@
                     @endif
                 </p>
 
-                <!-- Quantity and Add to Cart -->
+                {{-- Quantity and Add to Cart  --}}
                 <form action="{{ route('cart.store') }}" method="POST" class="mt-5">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -79,7 +79,7 @@
                         </button>
                     @else
                         <div class="flex mt-4 space-x-1 md:mt-6">
-                            <!-- Add to Cart -->
+                            {{-- Add to Cart  --}}
                             <form action="{{ route('cart.store') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -90,7 +90,7 @@
                                 </button>
                             </form>
 
-                            <!-- Buy Now -->
+                            {{-- Buy Now --}}
                             <form action="{{ route('buynow.buy', $product->id) }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -107,7 +107,7 @@
                 </form>
             </div>
 
-            <!-- Delivery & Support Info -->
+            {{--  Delivery & Support Info --}}
             <div class="px-4 py-4 rounded-lg shadow-sm bg-gray-50">
                 <div class="space-y-4">
                     <div class="flex items-center">
@@ -138,13 +138,13 @@
             </div>
         </div>
 
-        <!-- Product Description -->
+        {{-- Product Description --}}
         <div class="px-4 mt-10 lg:px-16">
             <h2 class="text-2xl font-bold text-black">About Product</h2>
             <p class="mt-2 text-lg text-gray-600">{{ $product->description }}</p>
         </div>
 
-        <!-- Reviews Section -->
+        {{-- Reviews Section --}}
         <div class="px-4 mt-10 lg:px-16">
             <h2 class="pl-2 mb-4 text-2xl font-semibold border-l-4 border-yellow-500">Customer Reviews</h2>
             @if ($reviews->isEmpty())
@@ -161,7 +161,7 @@
                                 <div class="ml-4">
                                     <h4 class="text-lg font-semibold">{{ $review->user->name }}</h4>
                                     <div class="flex items-center">
-                                        <!-- Display star rating based on review rating -->
+                                        {{--  Display star rating based on review rating  --}}
                                         @for ($i = 1; $i <= 5; $i++)
                                             <svg class="w-6 h-6 {{ $i <= $review->rating ? 'text-yellow-400' : 'text-gray-300' }}"
                                                 fill="currentColor" viewBox="0 0 20 20">
@@ -204,7 +204,7 @@
 
 
 
-    <!-- Related Products Section -->
+    {{-- Related Products Section --}}
     <div class="px-4 mt-10 lg:px-16">
         <div class="pl-2 border-l-4 border-yellow-500">
             <h1 class="text-2xl font-bold text-gray-900">Related Products</h1>
@@ -213,7 +213,7 @@
             @foreach ($relatedproducts as $rproduct)
                 {{-- Ensure this matches the variable passed from the controller --}}
                 <a href="{{ route('viewproduct', $rproduct->id) }}" class="flex-shrink-0">
-                    <!-- Product card with fixed min-width for small/medium devices -->
+                    {{-- Product card with fixed min-width for small/medium devices --}}
                     <div
                         class="overflow-hidden border rounded-lg shadow-lg min-w-[16rem]  wow animate__animated animate__zoomIn">
                         <img src="{{ asset('images/products/' . $rproduct->photopath) }}" alt="{{ $rproduct->name }}"
@@ -232,7 +232,7 @@
                                 @endif
                             </div>
 
-                            <!-- Display the average rating for the related product -->
+                            {{-- Display the average rating for the related product --}}
                             <div class="flex items-center mt-2">
                                 @php
                                     // Calculate the number of full stars, half stars, and empty stars for related products

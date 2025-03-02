@@ -3,7 +3,7 @@
 @section('content')
     <div class="checkout-container"
         style="display: flex; gap: 20px; padding: 20px; background-color: #f9f9f9; border-radius: 8px;">
-        <!-- Product Information Section -->
+        {{-- Product Information Section --}}
         <div class="product-info"
             style="flex: 1 1 100%; max-width: 100%; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
             <h3 style="margin-bottom: 20px;">Product Information</h3>
@@ -20,12 +20,12 @@
             </div>
         </div>
 
-        <!-- Payment Options Section -->
+        {{-- Payment Options Section --}}
         <div class="payment-options "
             style="flex: 1 1 100%; max-width: 100%;  background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
             <h3 style="margin-bottom: 20px;">Payment Options</h3>
 
-            <!-- Cash on Delivery -->
+            {{-- Cash on Delivery --}}
             <form action="{{ route('buynow.placeOrder') }}" method="POST" style="margin-bottom: 20px;">
                 @csrf
                 <input type="hidden" name="name" value="{{ auth()->user()->name }}">
